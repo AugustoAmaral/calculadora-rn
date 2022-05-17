@@ -3,12 +3,14 @@ import { StyleSheet, View, Text } from "react-native";
 
 interface DisplayProps {
   text?: string;
+  guideText?: Array<string>;
 }
 
-const Display = ({ text }: DisplayProps) => {
+const Display = ({ text, guideText }: DisplayProps) => {
   return (
     <View style={styles.display}>
-      <Text>{text ?? ""}</Text>
+      <Text>{guideText?.join(" ")}</Text>
+      <Text style={styles.currentValue}>{text ?? ""}</Text>
     </View>
   );
 };
@@ -17,8 +19,14 @@ const styles = StyleSheet.create({
   display: {
     flex: 1,
     backgroundColor: "#AAA",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: "column-reverse",
+  },
+  currentValue: {
+    fontSize: 40,
+    marginRight: 20,
+    textAlign: "right",
+    fontWeight: "bold",
+    color: "#FFF",
   },
 });
 

@@ -4,7 +4,7 @@ interface ButtonProps {
   innerText: string;
   buttonStyle: object;
   forceDisable?: boolean;
-  onPress?: () => void;
+  onPress: (number: string) => void;
 }
 
 const GameButton = ({
@@ -18,7 +18,7 @@ const GameButton = ({
   return (
     <TouchableOpacity
       style={innerStyle}
-      onPress={onPress}
+      onPress={() => onPress(innerText)}
       disabled={forceDisable}
     >
       <Text style={styles.text}>{innerText}</Text>
